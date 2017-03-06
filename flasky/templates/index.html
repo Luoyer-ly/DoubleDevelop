@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{%block title%}
+{{ super() }}
+
+{%endblock%}
+{%macro render_comment(comment)%}
+	<li>{{comment}}</li>
+{%endmacro%}
+{%block page_content%}
+<ul>
+	<h1>Hello World</h1>
+	{%for comment in comments%}
+		{{render_comment(comment)}}
+	{%endfor%}
+</ul>
+
+
+<a href={{jmp_link}}>gogogo</a> <br>
+<a href="{{ url_for('static', filename = 'favicon.ico') }}">icon</a>
+<a href="{{ url_for('static', filename = 'color-wheel.ico') }}">icon</a>
+
+<p>{{current_time}}</p>
+<p>The local date and time is {{ moment().format('LLLL')}}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh="1") }}</p>
+{%endblock%}
+
+
